@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "d9f6a9e8-0000-4dbe-9c1d-collection",
+    "name": "Telecom Cart API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Cart",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/cart",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cart"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const json = pm.response.json();",
+              "pm.collectionVariables.set('cartId', json.cartId);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Cart",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/cart/{{cartId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "{{cartId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Item",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sku\": \"ITEM_123\",\n  \"quantity\": 2\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cart/{{cartId}}/items",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "{{cartId}}",
+            "items"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const json = pm.response.json();",
+              "if (json.items && json.items.length) {",
+              "  pm.collectionVariables.set('itemId', json.items[0].itemId);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Update Item Quantity",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantity\": 3\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cart/{{cartId}}/items/{{itemId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "{{cartId}}",
+            "items",
+            "{{itemId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Remove Item",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/cart/{{cartId}}/items/{{itemId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "{{cartId}}",
+            "items",
+            "{{itemId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "cartId",
+      "value": ""
+    },
+    {
+      "key": "itemId",
+      "value": ""
+    }
+  ]
+}
