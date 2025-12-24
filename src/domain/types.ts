@@ -23,6 +23,10 @@ export interface SalesforceCartClient {
   createBasket(): Basket;
   getBasket(basketId: string): Basket;
   addItem(basketId: string, sku: string, quantity: number): Basket;
-  updateItemQuantity(basketId: string, itemId: string, quantity: number): Basket;
+  updateItemQuantity(
+    basketId: string,
+    itemId: string,
+    quantity: number
+  ): Basket;
   removeItem(basketId: string, itemId: string): Basket;
 }

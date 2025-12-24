@@ -1,5 +1,6 @@
-import { Basket } from '../../domain/types';
+import { Basket } from "../../domain/types";
 
+// Returns the internal Basket model into the JSON as per API Contract
 export function mapBasketToResponse(basket: Basket) {
   return {
     cartId: basket.id,
@@ -8,8 +9,8 @@ export function mapBasketToResponse(basket: Basket) {
       sku: item.sku,
       quantity: item.quantity,
       unitPrice: item.unitPrice,
-      totalPrice: item.totalPrice
+      totalPrice: item.totalPrice,
     })),
-    totals: basket.totals
+    totals: basket.totals,
   };
 }

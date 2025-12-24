@@ -3,6 +3,7 @@ import { InvalidItemQuantityError } from "../../errors/CartErrors";
 import cartClient from "../cartClient";
 import { mapBasketToResponse } from "./mapBasketToResponse";
 
+// Validates quantity and upsert item to the cart via SKU as identifier client.
 export function addItem(req: Request, res: Response, next: NextFunction) {
   try {
     const { sku } = req.body;
