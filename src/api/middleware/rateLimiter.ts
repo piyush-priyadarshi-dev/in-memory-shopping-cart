@@ -7,7 +7,7 @@ const DEFAULT_WINDOW_MS = 60_000;
 type Entry = { count: number; windowStart: number };
 const requests = new Map<string, Entry>();
 
-// Simple in-memory IP-based rate limiter with configurable window and limit.
+/** Simple in-memory IP-based rate limiter with configurable window and limit. */
 export function rateLimiter(req: Request, res: Response, next: NextFunction) {
   const limitEnv = Number(process.env.RATE_LIMIT_PER_MIN);
   const windowEnv = Number(process.env.RATE_LIMIT_WINDOW_MS);

@@ -1,6 +1,6 @@
 type LogLevel = "info" | "error";
 
-// Lightweight console logger to keep output consistent.
+/** Lightweight console logger to keep output consistent. */
 const formatMessage = (
   level: LogLevel,
   message: string,

@@ -1,4 +1,4 @@
-// Basket id does not exist in the in-memory store.
+/** Basket id does not exist in the in-memory store. */
 export class BasketNotFoundError extends Error {
   constructor(message = "Basket not found") {
     super(message);
@@ -6,7 +6,7 @@ export class BasketNotFoundError extends Error {
   }
 }
 
-// Basket exists but has exceeded its expiry window.
+/** Basket exists but has exceeded its expiry window. */
 export class BasketExpiredError extends Error {
   constructor(message = "Basket expired") {
     super(message);
@@ -14,7 +14,7 @@ export class BasketExpiredError extends Error {
   }
 }
 
-// Quantity validation failed (zero or negative).
+/** Quantity validation failed (zero or negative). */
 export class InvalidItemQuantityError extends Error {
   constructor(message = "Invalid quantity") {
     super(message);
@@ -22,7 +22,7 @@ export class InvalidItemQuantityError extends Error {
   }
 }
 
-// Item id not present within the basket.
+/** Item id not present within the basket. */
 export class ItemNotFoundError extends Error {
   constructor(message = "Item not found") {
     super(message);
